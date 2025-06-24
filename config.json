@@ -1,151 +1,153 @@
 {
-  "version": "2.0.0",
-  "language": "en",
-  "DeveloperMode": true,
-  "autoCreateDB": true,
-  "allowInbox": true,
-  "autoClean": true,
-  "adminOnly": false,
-  "encryptSt": true,
-  "removeSt": false,
-  "UPDATE": {
-    "Package": true,
-    "EXCLUDED": [
-      "chalk",
-      "mqtt",
-      "https-proxy-agent",
-      "gradient-string"
+    "version": "2.0.0",
+    "language": "en",
+    "DeveloperMode": true,
+    "autoCreateDB": true,
+    "allowInbox": true,
+    "autoClean": true,
+    "adminOnly": false,
+    "encryptSt": true,
+    "removeSt": false,
+    "UPDATE": {
+        "Package": true,
+        "EXCLUDED": [
+            "chalk",
+            "mqtt",
+            "https-proxy-agent",
+            "gradient-string"
+        ],
+        "Info": "This section manages the bot's automatic package updates. To disable this function, set 'Package' to false. If you only want to exclude specific packages, set them to true and add them in the 'EXCLUDED' list."
+    },
+    "commandDisabled": [
+        "renkup.js"
     ],
-    "Info": "This section manages the bot's automatic package updates. To disable this function, set 'Package' to false. If you only want to exclude specific packages, set them to true and add them in the 'EXCLUDED' list."
-  },
-  "commandDisabled": [],
-  "eventDisabled": [],
-  "BOTNAME": "TOHI-BOT",
-  "PREFIX": "/",
-  "ADMINBOT": [
-    "100092006324917"
-  ],
-  "DESIGN": {
-    "Title": "TOHI-BOT-HUB-ENHANCED",
-    "Theme": "matrix",
-    "Admin": "TOHI-BOT-HUB",
-    "Credits": "TOHI-BOT-HUB Enhanced Framework v2.0.0",
-    "Setup": {
-      "Info": "Enhanced design system with advanced terminal customization",
-      "Themes": "Matrix, Hacker, Rainbow, Purple, Ghost, Summer, Flower, Teen, Sunlight, Retro, Red, Pink, Orange, Blue, Fiery, Aqua themes available"
+    "eventDisabled": [],
+    "BOTNAME": "TOHI-BOT",
+    "PREFIX": "/",
+    "ADMINBOT": [
+        "100092006324917"
+    ],
+    "DESIGN": {
+        "Title": "TOHI-BOT-HUB-ENHANCED",
+        "Theme": "matrix",
+        "Admin": "TOHI-BOT-HUB",
+        "Credits": "TOHI-BOT-HUB Enhanced Framework v2.0.0",
+        "Setup": {
+            "Info": "Enhanced design system with advanced terminal customization",
+            "Themes": "Matrix, Hacker, Rainbow, Purple, Ghost, Summer, Flower, Teen, Sunlight, Retro, Red, Pink, Orange, Blue, Fiery, Aqua themes available"
+        }
+    },
+    "APPSTATEPATH": "appstate.json",
+    "DEL_FUNCTION": false,
+    "ADD_FUNCTION": true,
+    "FCAOption": {
+        "forceLogin": false,
+        "listenEvents": true,
+        "autoMarkDelivery": true,
+        "autoMarkRead": true,
+        "logLevel": "info",
+        "selfListen": false,
+        "online": true,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "bypassRegion": "PRN",
+        "updatePresence": true,
+        "emitReady": true
+    },
+    "ENHANCED_FEATURES": {
+        "GROUP_APPROVAL_SYSTEM": true,
+        "ADVANCED_COMMAND_HANDLER": true,
+        "RATE_LIMITING": true,
+        "AUTO_CLEAN_CACHE": true,
+        "PERFORMANCE_OPTIMIZATION": true,
+        "ENHANCED_LOGGING": true,
+        "SECURITY_FEATURES": true
+    },
+    "SECURITY": {
+        "MAX_COMMANDS_PER_MINUTE": 10,
+        "COOLDOWN_BYPASS_ADMINS": true,
+        "AUTO_BAN_SPAMMERS": true,
+        "COMMAND_TIMEOUT": 60000,
+        "RATE_LIMIT_THRESHOLD": 5
+    },
+    "daily": {
+        "cooldownTime": 43200000
+    },
+    "work": {
+        "cooldownTime": 1200000
+    },
+    "help": {
+        "autoUnsend": true,
+        "delayUnsend": 20
+    },
+    "adminUpdate": {
+        "autoUnsend": true,
+        "sendNoti": true,
+        "timeToUnsend": 15
+    },
+    "adminNoti": {
+        "autoUnsend": true,
+        "sendNoti": true,
+        "timeToUnsend": 15
+    },
+    "sing": {
+        "YOUTUBE_API": "AIzaSyBtiD442srhczDpcg8xbhinP423BeUFXB8",
+        "SOUNDCLOUD_API": "MMJhwmfTYJVFm9TiUdmYYyrf6Pzpzf3YN1"
+    },
+    "video": {
+        "YOUTUBE_API": "AIzaSyDEE1-zZSRVI8lTaQOVsIAQFgL-_BJKvhk"
+    },
+    "audio": {
+        "YOUTUBE_API": "AIzaSyDEE1-zZSRVI8lTaQOVsIAQFgL-_BJKvhk"
+    },
+    "menu": {
+        "autoUnsend": true,
+        "delayUnsend": 60
+    },
+    "weather": {
+        "OPEN_WEATHER": "b7f1db5959a1f5b2a079912b03f0cd96"
+    },
+    "video3": {
+        "YOUTUBE_API": "AIzaSyDEE1-zZSRVI8lTaQOVsIAQFgL-_BJKvhk"
+    },
+    "logs": {
+        "enable": true,
+        "level": "enhanced"
+    },
+    "SYSTEM": {
+        "Framework": "TOHI-BOT-HUB-ENHANCED",
+        "Version": "2.0.0",
+        "Developer": "TOHIDUL",
+        "Credits": "TOHI-BOT-HUB Enhanced Bot Framework System v2.0.0",
+        "Repository": "https://github.com/TOHI-BOT-HUB/TOHI-BOT-HUB",
+        "License": "MIT",
+        "BuildDate": "2024-12-26",
+        "Enhancement": "Rebuilt with advanced features and optimizations"
+    },
+    "autoCleanCache": true,
+    "video2": {
+        "YOUTUBE_API": "AIzaSyBtiD442srhczDpcg8xbhinP423BeUFXB8"
+    },
+    "sing2": {
+        "YOUTUBE_API": "AIzaSyBtiD442srhczDpcg8xbhinP423BeUFXB8",
+        "SOUNDCLOUD_API": "MMJhwmfTYJVFm9TiUdmYYyrf6Pzpzf3YN1"
+    },
+    "BANK_API": {
+        "BASE_URL": "http://0.0.0.0:3002/bank",
+        "ENABLED": true,
+        "FALLBACK_URL": "http://localhost:3002/bank",
+        "ENHANCED": true
+    },
+    "APPROVAL": {
+        "approvedGroups": [],
+        "pendingGroups": [],
+        "rejectedGroups": [],
+        "AUTO_APPROVE": false,
+        "STRICT_MODE": true
+    },
+    "PERFORMANCE": {
+        "CACHE_CLEANUP_INTERVAL": 300000,
+        "MEMORY_LIMIT": "512MB",
+        "MAX_CONCURRENT_COMMANDS": 50,
+        "COMMAND_QUEUE_SIZE": 100
     }
-  },
-  "APPSTATEPATH": "appstate.json",
-  "DEL_FUNCTION": false,
-  "ADD_FUNCTION": true,
-  "FCAOption": {
-    "forceLogin": false,
-    "listenEvents": true,
-    "autoMarkDelivery": true,
-    "autoMarkRead": true,
-    "logLevel": "info",
-    "selfListen": false,
-    "online": true,
-    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    "bypassRegion": "PRN",
-    "updatePresence": true,
-    "emitReady": true
-  },
-  "ENHANCED_FEATURES": {
-    "GROUP_APPROVAL_SYSTEM": true,
-    "ADVANCED_COMMAND_HANDLER": true,
-    "RATE_LIMITING": true,
-    "AUTO_CLEAN_CACHE": true,
-    "PERFORMANCE_OPTIMIZATION": true,
-    "ENHANCED_LOGGING": true,
-    "SECURITY_FEATURES": true
-  },
-  "SECURITY": {
-    "MAX_COMMANDS_PER_MINUTE": 10,
-    "COOLDOWN_BYPASS_ADMINS": true,
-    "AUTO_BAN_SPAMMERS": true,
-    "COMMAND_TIMEOUT": 60000,
-    "RATE_LIMIT_THRESHOLD": 5
-  },
-  "daily": {
-    "cooldownTime": 43200000
-  },
-  "work": {
-    "cooldownTime": 1200000
-  },
-  "help": {
-    "autoUnsend": true,
-    "delayUnsend": 20
-  },
-  "adminUpdate": {
-    "autoUnsend": true,
-    "sendNoti": true,
-    "timeToUnsend": 15
-  },
-  "adminNoti": {
-    "autoUnsend": true,
-    "sendNoti": true,
-    "timeToUnsend": 15
-  },
-  "sing": {
-    "YOUTUBE_API": "AIzaSyBtiD442srhczDpcg8xbhinP423BeUFXB8",
-    "SOUNDCLOUD_API": "MMJhwmfTYJVFm9TiUdmYYyrf6Pzpzf3YN1"
-  },
-  "video": {
-    "YOUTUBE_API": "AIzaSyDEE1-zZSRVI8lTaQOVsIAQFgL-_BJKvhk"
-  },
-  "audio": {
-    "YOUTUBE_API": "AIzaSyDEE1-zZSRVI8lTaQOVsIAQFgL-_BJKvhk"
-  },
-  "menu": {
-    "autoUnsend": true,
-    "delayUnsend": 60
-  },
-  "weather": {
-    "OPEN_WEATHER": "b7f1db5959a1f5b2a079912b03f0cd96"
-  },
-  "video3": {
-    "YOUTUBE_API": "AIzaSyDEE1-zZSRVI8lTaQOVsIAQFgL-_BJKvhk"
-  },
-  "logs": {
-    "enable": true,
-    "level": "enhanced"
-  },
-  "SYSTEM": {
-    "Framework": "TOHI-BOT-HUB-ENHANCED",
-    "Version": "2.0.0",
-    "Developer": "TOHIDUL",
-    "Credits": "TOHI-BOT-HUB Enhanced Bot Framework System v2.0.0",
-    "Repository": "https://github.com/TOHI-BOT-HUB/TOHI-BOT-HUB",
-    "License": "MIT",
-    "BuildDate": "2024-12-26",
-    "Enhancement": "Rebuilt with advanced features and optimizations"
-  },
-  "autoCleanCache": true,
-  "video2": {
-    "YOUTUBE_API": "AIzaSyBtiD442srhczDpcg8xbhinP423BeUFXB8"
-  },
-  "sing2": {
-    "YOUTUBE_API": "AIzaSyBtiD442srhczDpcg8xbhinP423BeUFXB8",
-    "SOUNDCLOUD_API": "MMJhwmfTYJVFm9TiUdmYYyrf6Pzpzf3YN1"
-  },
-  "BANK_API": {
-    "BASE_URL": "http://0.0.0.0:3002/bank",
-    "ENABLED": true,
-    "FALLBACK_URL": "http://localhost:3002/bank",
-    "ENHANCED": true
-  },
-  "APPROVAL": {
-    "approvedGroups": [],
-    "pendingGroups": [],
-    "rejectedGroups": [],
-    "AUTO_APPROVE": false,
-    "STRICT_MODE": true
-  },
-  "PERFORMANCE": {
-    "CACHE_CLEANUP_INTERVAL": 300000,
-    "MEMORY_LIMIT": "512MB",
-    "MAX_CONCURRENT_COMMANDS": 50,
-    "COMMAND_QUEUE_SIZE": 100
-  }
 }
