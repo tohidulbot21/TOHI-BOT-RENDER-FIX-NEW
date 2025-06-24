@@ -13,7 +13,7 @@
     "render-build-fallback": "npm cache clean --force && rm -rf node_modules package-lock.json && npm install --no-audit --no-fund --prefer-offline --no-optional --legacy-peer-deps --force && mkdir -p modules/commands/cache modules/events/cache includes/database/data attached_assets utils languages"
   },
   "engines": {
-    "node": ">=21.0.0",
+    "node": ">=20.0.0",
     "npm": ">=10.0.0"
   },
   "presets": [
@@ -38,6 +38,7 @@
     "ansi": "^0.3.1",
     "axios": "^1.10.0",
     "bluebird": "^3.7.2",
+    "canvas": "^3.1.1",
     "chalk": "^4.1.2",
     "cheerio": "^1.0.0",
     "child_process": "^1.0.2",

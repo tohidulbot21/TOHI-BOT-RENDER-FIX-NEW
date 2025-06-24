@@ -2357,27 +2357,27 @@
     "61573003302026": {
         "userID": "61573003302026",
         "money": 0,
-        "exp": 3,
+        "exp": 4,
         "createTime": {
             "timestamp": 1750332164899
         },
         "data": {
             "timestamp": 1750332164899
         },
-        "lastUpdate": 1750487044432,
+        "lastUpdate": 1750760589434,
         "name": "You R Candy"
     },
     "100076969407340": {
         "userID": "100076969407340",
         "money": 0,
-        "exp": 6,
+        "exp": 7,
         "createTime": {
             "timestamp": 1750344536699
         },
         "data": {
             "timestamp": 1750344536699
         },
-        "lastUpdate": 1750759101780,
+        "lastUpdate": 1750760597823,
         "name": "Aryan Ahmed"
     },
     "61575913680852": {
