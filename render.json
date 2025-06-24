@@ -1,0 +1,29 @@
+
+{
+  "name": "TOHI-BOT-HUB",
+  "type": "web",
+  "env": "node",
+  "buildCommand": "npm run render-build",
+  "startCommand": "node main.js",
+  "plan": "free",
+  "region": "singapore",
+  "environmentVariables": {
+    "NODE_ENV": "production",
+    "PORT": "10000",
+    "HOST": "0.0.0.0",
+    "NPM_CONFIG_PRODUCTION": "false",
+    "SKIP_CANVAS": "true"
+  },
+  "scaling": {
+    "minInstances": 1,
+    "maxInstances": 1
+  },
+  "healthCheck": {
+    "path": "/health",
+    "timeout": 30
+  },
+  "deploy": {
+    "branch": "main",
+    "autoRedeploy": true
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "groups": {
+    "6601227983317461": {
+      "status": "approved",
+      "approvedAt": "2025-06-20T11:46:10.054Z",
+      "settings": {
+        "allowCommands": true,
+        "autoApprove": false
+      },
+      "lastUpdated": "2025-06-20T11:46:10.054Z"
+    },
+    "8691975704250419": {
+      "status": "approved",
+      "approvedAt": "2025-06-20T11:48:29.307Z",
+      "settings": {
+        "allowCommands": true,
+        "autoApprove": false
+      },
+      "lastUpdated": "2025-06-20T11:48:29.307Z"
+    },
+    "29898944713085639": {
+      "status": "approved",
+      "approvedAt": "2025-06-20T12:48:03.576Z",
+      "settings": {
+        "allowCommands": true,
+        "autoApprove": false
+      },
+      "lastUpdated": "2025-06-20T12:48:03.576Z"
+    },
+    "auto-migrate": {
+      "status": "approved",
+      "approvedAt": "2025-06-21T10:51:33.414Z",
+      "settings": {
+        "allowCommands": true,
+        "autoApprove": false
+      },
+      "lastUpdated": "2025-06-21T10:51:33.414Z"
+    },
+    "9826242237455305": {
+      "threadID": "9826242237455305",
+      "threadName": "☠️𝚃𝙷𝙴 𝙱𝙾𝚃 ʷᵒʳˡᵈ ╰_╯",
+      "memberCount": 10,
+      "status": "approved",
+      "createdAt": "2025-06-21T11:12:26.155Z",
+      "lastUpdated": "2025-06-21T11:12:26.156Z",
+      "adminList": [
+        {
+          "id": "61557765517246"
+        },
+        {
+          "id": "100092006324917"
+        }
+      ],
+      "settings": {
+        "allowCommands": true,
+        "autoApprove": false
+      },
+      "approvedAt": "2025-06-21T11:12:26.156Z"
+    },
+    "29215999454712506": {
+      "threadID": "29215999454712506",
+      "threadName": "Unknown Group",
+      "memberCount": 0,
+      "status": "approved",
+      "createdAt": "2025-06-23T15:51:40.155Z",
+      "lastUpdated": "2025-06-23T15:51:40.156Z",
+      "adminList": [],
+      "settings": {
+        "allowCommands": true,
+        "autoApprove": false
+      },
+      "approvedAt": "2025-06-23T15:51:40.156Z"
+    }
+  },
+  "settings": {
+    "migrated": true
+  }
+}
