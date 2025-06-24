@@ -3,7 +3,7 @@
   "name": "TOHI-BOT-HUB",
   "type": "web",
   "env": "node",
-  "nodeVersion": "18.20.0",
+  "nodeVersion": "21.0.0",
   "buildCommand": "chmod +x render-build.sh && ./render-build.sh || (chmod +x render-fallback.sh && ./render-fallback.sh)",
   "startCommand": "node main.js",
   "plan": "free",
