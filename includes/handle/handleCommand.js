@@ -173,6 +173,7 @@ module.exports = function ({ api, Users, Threads, Currencies, logger, botSetting
       // Get thread settings
       const threadData = global.data.threadData.get(threadID) || {};
       const prefix = threadData.PREFIX || global.config.PREFIX || "/";
+      let actualPrefix = prefix;
 
       let commandName = "";
       let args = [];
@@ -378,7 +379,7 @@ module.exports = function ({ api, Users, Threads, Currencies, logger, botSetting
           const chalk = require("chalk");
           const gradient = require("gradient-string");
 
-          const displayCommand = usedPrefix ? `${prefix}${commandName}` : commandName;
+          const displayCommand = usedPrefix ? `${actualPrefix}${commandName}` : commandName;
            // Log command execution only for valid commands
           console.log(`📝 Command executed: ${usedPrefix ? prefix : ''}${commandName} by ${userName} (${senderID}) in ${threadID}`);
           console.log(
@@ -398,7 +399,7 @@ module.exports = function ({ api, Users, Threads, Currencies, logger, botSetting
         // Only log for valid commands
         if (command && command.config && command.config.name) {
           const chalk = require("chalk");
-          const displayCommand = usedPrefix ? `${prefix}${commandName}` : commandName;
+          const displayCommand = usedPrefix ? `${actualPrefix}${commandName}` : commandName;
           console.log(
             chalk.cyan("⫸ TOHI-BOT ➤ ") + 
             chalk.green("✓ ") +
