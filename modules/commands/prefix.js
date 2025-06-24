@@ -1,86 +1,168 @@
+
 module.exports.config = {
-  name: "prefix",
-  version: "1.0.7",
-  hasPermssion: 0,
-  credits: "TOHI-BOT-HUB",
-  description: "🔥 স্টাইলিশ প্রিফিক্স গ্রিটিং! 🚀",
-  usePrefix: true,
-  commandCategory: "system",
-  usages: "",
-  cooldowns: 3
+    name: "prefix",
+    version: "2.0.1",
+    hasPermssion: 0,
+    usePrefix: false, // Can be called without prefix
+    credits: "TOHI-BOT-HUB",
+    description: "Display current prefix and manage global/group prefixes",
+    commandCategory: "config",
+    usages: "[global|group|reset]",
+    cooldowns: 3,
 };
 
-const boxTop = "╔════════════════════════╗";
-const boxBot = "╚════════════════════════╝";
-const boxBar = " ";
-const pad = (txt) => txt.padEnd(31, " ");
-const line = (txt) => `${boxBar} ${pad(txt)}${boxBar}`;
-
-// Function to convert text to stylish font
-function toStylishFont(text) {
-  let stylishText = "";
-  const fontMapping = {
-    'a': '𝗮', 'b': '𝗯', 'c': '𝗰', 'd': '𝗱', 'e': '𝗲', 'f': '𝗳', 'g': '𝗴', 'h': '𝗵', 'i': '𝗶', 'j': '𝗷', 'k': '𝗸', 'l': '𝗹', 'm': '𝗺',
-    'n': '𝗻', 'o': '𝗼', 'p': '𝗽', 'q': '𝗾', 'r': '𝗿', 's': '𝘀', 't': '𝘁', 'u': '𝘂', 'v': '𝘃', 'w': '𝘄', 'x': '𝘅', 'y': '𝘆', 'z': '𝘇',
-    'A': '𝗔', 'B': '𝗕', 'C': '𝗖', 'D': '𝗗', 'E': '𝗘', 'F': '𝗙', 'G': '𝗚', 'H': '𝗛', 'I': '𝗜', 'J': '𝗝', 'K': '𝗞', 'L': '𝗟', 'M': '𝗠',
-    'N': '𝗡', 'O': '𝗢', 'P': '𝗣', 'Q': '𝗤', 'R': '𝗥', 'S': '𝗦', 'T': '𝗧', 'U': '𝗨', 'V': '𝗩', 'W': '𝗪', 'X': '𝗫', 'Y': '𝗬', 'Z': '𝗭'
-  };
-
-  for (const char of text) {
-    stylishText += fontMapping[char] || char;
-  }
-
-  return stylishText;
-}
-
-module.exports.handleEvent = async function ({ api, event }) {
-  const { threadID, messageID, body } = event;
-  const prefix = global.config.PREFIX || "/";
-
-  if (!body) return;
-  const trimmedBody = body.trim().toLowerCase();
-
-  // Respond to both exact prefix and "prefix" text
-  if (trimmedBody !== prefix && trimmedBody !== "prefix") return;
-
-  const botName = global.config.BOTNAME || "TOHI-BOT";
-  const stylishBotName = toStylishFont(botName);
-  const stylishOwner = toStylishFont("TOHIDUL");
-
-  const message = [
-    boxTop,
-    line(""),
-    line(`✨ 𝗕𝗢𝗧: ${stylishBotName} ✨`),
-    line(""),
-    line(`🔥 𝗣𝗿𝗲𝗳𝗶𝘅: [ ${prefix} ] 🔥`),
-    line(""),
-    line(`👑 𝗢𝘄𝗻𝗲𝗿: ${stylishOwner} 👑`),
-    line(""),
-    boxBot
-  ].join("\n");
-
-  return api.sendMessage(message, threadID, messageID);
+module.exports.languages = {
+    "vi": {
+        "currentPrefix": "Prefix hiện tại của nhóm này là: %1",
+        "globalPrefix": "Prefix toàn cầu: %1",
+        "groupPrefix": "Prefix nhóm: %1",
+        "noGroupPrefix": "Nhóm này đang sử dụng prefix toàn cầu",
+        "adminOnly": "Chỉ admin bot mới có thể thay đổi prefix",
+        "usage": "Sử dụng: prefix [global|group|reset]"
+    },
+    "en": {
+        "currentPrefix": "Current prefix for this group is: %1",
+        "globalPrefix": "Global prefix: %1",
+        "groupPrefix": "Group prefix: %1",
+        "noGroupPrefix": "This group is using global prefix",
+        "adminOnly": "Only bot admin can change prefix",
+        "usage": "Usage: prefix [global|group|reset]"
+    },
+    "bd": {
+        "currentPrefix": "এই গ্রুপের বর্তমান প্রিফিক্স: %1",
+        "globalPrefix": "গ্লোবাল প্রিফিক্স: %1",
+        "groupPrefix": "গ্রুপ প্রিফিক্স: %1",
+        "noGroupPrefix": "এই গ্রুপ গ্লোবাল প্রিফিক্স ব্যবহার করছে",
+        "adminOnly": "শুধুমাত্র bot admin prefix পরিবর্তন করতে পারে",
+        "usage": "ব্যবহার: prefix [global|group|reset]"
+    }
 };
 
-module.exports.run = async function ({ api, event }) {
-  const { threadID, messageID } = event;
-  const prefix = global.config.PREFIX || "/";
+module.exports.run = async ({ api, event, args, Threads, getText }) => {
+    const { threadID, messageID, senderID } = event;
+    
+    // Fallback function for language errors
+    const getTextSafe = (key, ...params) => {
+        try {
+            return getText(key, ...params);
+        } catch (error) {
+            console.log(`Language key error: ${key}`);
+            switch(key) {
+                case "currentPrefix":
+                    return `এই গ্রুপের বর্তমান প্রিফিক্স: ${params[0]}`;
+                case "globalPrefix":
+                    return `গ্লোবাল প্রিফিক্স: ${params[0]}`;
+                case "groupPrefix":
+                    return `গ্রুপ প্রিফিক্স: ${params[0]}`;
+                case "noGroupPrefix":
+                    return "এই গ্রুপ গ্লোবাল প্রিফিক্স ব্যবহার করছে";
+                case "adminOnly":
+                    return "শুধুমাত্র bot admin prefix পরিবর্তন করতে পারে";
+                case "usage":
+                    return "ব্যবহার: prefix [global|group|reset]";
+                default:
+                    return "Language error occurred";
+            }
+        }
+    };
 
-  const botName = global.config.BOTNAME || "TOHI-BOT";
-  const stylishBotName = toStylishFont(botName);
-  const stylishOwner = toStylishFont("TOHIDUL");
+    try {
+        // Get global prefix
+        const globalPrefix = global.config.PREFIX;
+        
+        // Get group data and current prefix
+        const threadData = (await Threads.getData(threadID)).data || {};
+        const currentGroupPrefix = threadData.PREFIX;
+        const activePrefix = currentGroupPrefix || globalPrefix;
 
-  const message = [
-    boxTop,
-    line(""),
-    line(`✨ 𝗕𝗢𝗧: ${stylishBotName} ✨`),
-    line(""),
-    line(`🔥 𝗣𝗿𝗲𝗳𝗶𝘅: [ ${prefix} ] 🔥`),
-    line(""),
-    line(`👑 𝗢𝘄𝗻𝗲𝗿: ${stylishOwner} 👑`),
-    line(""),
-    boxBot
-  ].join("\n");
+        // If no arguments, show current prefix info
+        if (!args[0]) {
+            let prefixInfo = `╭─────✨ প্রিফিক্স তথ্য ✨─────╮\n`;
+            prefixInfo += `│  🌐 গ্লোবাল প্রিফিক্স: "${globalPrefix}"\n`;
+            
+            if (currentGroupPrefix && currentGroupPrefix !== globalPrefix) {
+                prefixInfo += `│  🏠 গ্রুপ প্রিফিক্স: "${currentGroupPrefix}"\n`;
+                prefixInfo += `│  ✅ বর্তমান ব্যবহৃত: "${activePrefix}"\n`;
+            } else {
+                prefixInfo += `│  🏠 গ্রুপ প্রিফিক্স: সেট করা নেই\n`;
+                prefixInfo += `│  ✅ বর্তমান ব্যবহৃত: "${activePrefix}" (গ্লোবাল)\n`;
+            }
+            
+            prefixInfo += `│\n`;
+            prefixInfo += `│  📝 কমান্ড অপশন:\n`;
+            prefixInfo += `│  • prefix global - গ্লোবাল তথ্য দেখুন\n`;
+            prefixInfo += `│  • prefix group - গ্রুপ প্রিফিক্স ম্যানেজ করুন\n`;
+            prefixInfo += `│  • prefix reset - গ্রুপ প্রিফিক্স রিসেট করুন\n`;
+            prefixInfo += `╰───────────────────────────╯\n\n`;
+            prefixInfo += `💡 উদাহরণ: "${activePrefix}help" - help command চালান`;
+            
+            return api.sendMessage(prefixInfo, threadID, messageID);
+        }
 
-  return api.sendMessage(message, threadID, messageID);
+        const option = args[0].toLowerCase();
+
+        switch(option) {
+            case "global":
+                let globalInfo = `╭─────🌐 গ্লোবাল প্রিফিক্স ইনফো 🌐─────╮\n`;
+                globalInfo += `│  🔸 গ্লোবাল প্রিফিক্স: "${globalPrefix}"\n`;
+                globalInfo += `│  🔸 সব গ্রুপে ডিফল্ট হিসেবে কাজ করে\n`;
+                globalInfo += `│  🔸 config.json এ সেট করা আছে\n`;
+                globalInfo += `│  🔸 সব command এর সাথে কাজ করে\n`;
+                globalInfo += `╰─────────────────────────────╯\n\n`;
+                globalInfo += `💡 উদাহরণ: "${globalPrefix}help", "${globalPrefix}ai hello"`;
+                
+                return api.sendMessage(globalInfo, threadID, messageID);
+
+            case "group":
+                if (!global.config.ADMINBOT.includes(senderID)) {
+                    return api.sendMessage("❌ " + getTextSafe("adminOnly"), threadID, messageID);
+                }
+                
+                let groupInfo = `╭─────🏠 গ্রুপ প্রিফিক্স ম্যানেজমেন্ট 🏠─────╮\n`;
+                groupInfo += `│  🔸 বর্তমান গ্রুপ প্রিফিক্স: `;
+                
+                if (currentGroupPrefix && currentGroupPrefix !== globalPrefix) {
+                    groupInfo += `"${currentGroupPrefix}"\n`;
+                    groupInfo += `│  🔸 স্ট্যাটাস: কাস্টম প্রিফিক্স সক্রিয়\n`;
+                } else {
+                    groupInfo += `সেট করা নেই\n`;
+                    groupInfo += `│  🔸 স্ট্যাটাস: গ্লোবাল প্রিফিক্স ব্যবহার করছে\n`;
+                }
+                
+                groupInfo += `│  🔸 গ্লোবাল প্রিফিক্স: "${globalPrefix}"\n`;
+                groupInfo += `│\n`;
+                groupInfo += `│  ⚙️ ম্যানেজমেন্ট:\n`;
+                groupInfo += `│  • /setprefix [নতুন প্রিফিক্স] - নতুন সেট করুন\n`;
+                groupInfo += `│  • prefix reset - ডিফল্টে ফিরান\n`;
+                groupInfo += `╰───────────────────────────────╯\n\n`;
+                groupInfo += `💡 টিপ: গ্রুপ প্রিফিক্স শুধু এই গ্রুপেই কাজ করে`;
+                
+                return api.sendMessage(groupInfo, threadID, messageID);
+
+            case "reset":
+                if (!global.config.ADMINBOT.includes(senderID)) {
+                    return api.sendMessage("❌ " + getTextSafe("adminOnly"), threadID, messageID);
+                }
+                
+                // Reset group prefix to global
+                let data = (await Threads.getData(threadID)).data || {};
+                data["PREFIX"] = globalPrefix;
+                await Threads.setData(threadID, { data });
+                await global.data.threadData.set(String(threadID), data);
+                
+                let resetMsg = `✅ গ্রুপ প্রিফিক্স রিসেট সম্পন্ন!\n\n`;
+                resetMsg += `🔸 পুরাতন প্রিফিক্স: "${currentGroupPrefix || 'সেট করা ছিল না'}"\n`;
+                resetMsg += `🔸 নতুন প্রিফিক্স: "${globalPrefix}" (গ্লোবাল)\n\n`;
+                resetMsg += `💡 এখন এই গ্রুপে গ্লোবাল প্রিফিক্স "${globalPrefix}" ব্যবহার হবে`;
+                
+                return api.sendMessage(resetMsg, threadID, messageID);
+
+            default:
+                return api.sendMessage("❌ " + getTextSafe("usage"), threadID, messageID);
+        }
+        
+    } catch (error) {
+        console.log("Prefix command error:", error);
+        return api.sendMessage("❌ প্রিফিক্স তথ্য লোড করতে সমস্যা হয়েছে।", threadID, messageID);
+    }
 };
