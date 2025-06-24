@@ -2,7 +2,7 @@
     "100092006324917": {
         "userID": "100092006324917",
         "money": 1e+96,
-        "exp": 1549,
+        "exp": 1559,
         "createTime": {
             "timestamp": 1748273172692
         },
@@ -11,7 +11,7 @@
             "busy": false,
             "workTime": 1749800037975
         },
-        "lastUpdate": 1750757976644,
+        "lastUpdate": 1750759215699,
         "name": "MD Tohidul Islam",
         "lastDaily": 1749800679916
     },
@@ -1907,14 +1907,14 @@
     "100081708909700": {
         "userID": "100081708909700",
         "money": 0,
-        "exp": 18,
+        "exp": 19,
         "createTime": {
             "timestamp": 1749535376324
         },
         "data": {
             "timestamp": 1749535376324
         },
-        "lastUpdate": 1750755604813,
+        "lastUpdate": 1750759203693,
         "name": "FB_User_909700"
     },
     "61576670318254": {
@@ -2370,14 +2370,14 @@
     "100076969407340": {
         "userID": "100076969407340",
         "money": 0,
-        "exp": 5,
+        "exp": 6,
         "createTime": {
             "timestamp": 1750344536699
         },
         "data": {
             "timestamp": 1750344536699
         },
-        "lastUpdate": 1750752111044,
+        "lastUpdate": 1750759101780,
         "name": "Aryan Ahmed"
     },
     "61575913680852": {
@@ -3320,14 +3320,14 @@
     "61577222290831": {
         "userID": "61577222290831",
         "money": 0,
-        "exp": 7,
+        "exp": 9,
         "createTime": {
             "timestamp": 1750694402184
         },
         "data": {
             "timestamp": 1750694402184
         },
-        "lastUpdate": 1750757865209,
+        "lastUpdate": 1750759204732,
         "name": "FB_User_290831"
     },
     "61577648069975": {
@@ -6619,5 +6619,17 @@
             "timestamp": 1750751327031
         },
         "lastUpdate": 1750751327031
+    },
+    "61577411184472": {
+        "userID": "61577411184472",
+        "money": 0,
+        "exp": 0,
+        "createTime": {
+            "timestamp": 1750759099016
+        },
+        "data": {
+            "timestamp": 1750759099016
+        },
+        "lastUpdate": 1750759099016
     }
 }
