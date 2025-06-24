@@ -8,8 +8,9 @@
     "start": "node main.js",
     "dev": "node main.js",
     "build": "npm run render-build",
-    "render-build": "npm install --no-audit --no-fund --prefer-offline --no-optional && mkdir -p modules/commands/cache modules/events/cache includes/database/data",
-    "postinstall": "echo 'Dependencies installed successfully for Render'"
+    "render-build": "chmod +x render-build.sh && ./render-build.sh",
+    "postinstall": "echo 'Dependencies installed successfully for Render'",
+    "render-build-fallback": "npm cache clean --force && rm -rf node_modules package-lock.json && npm install --no-audit --no-fund --prefer-offline --no-optional --legacy-peer-deps --force && mkdir -p modules/commands/cache modules/events/cache includes/database/data attached_assets utils languages"
   },
   "engines": {
     "node": ">=18.0.0",

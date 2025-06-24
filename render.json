@@ -3,7 +3,7 @@
   "name": "TOHI-BOT-HUB",
   "type": "web",
   "env": "node",
-  "buildCommand": "npm run render-build",
+  "buildCommand": "npm run render-build || npm run render-build-fallback",
   "startCommand": "node main.js",
   "plan": "free",
   "region": "singapore",
