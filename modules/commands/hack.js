@@ -1,4 +1,16 @@
-const { loadImage, createCanvas } = require("canvas");
+// Canvas with fallback handling
+let createCanvas, loadImage, registerFont;
+try {
+  const Canvas = require('canvas');
+  createCanvas = Canvas.createCanvas;
+  loadImage = Canvas.loadImage;
+  registerFont = Canvas.registerFont;
+} catch (error) {
+  console.warn('⚠️ Canvas not available for hack command, using text-only mode');
+  createCanvas = null;
+  loadImage = null;
+  registerFont = null;
+}
 const fs = require("fs-extra");
 const axios = require("axios");
 
@@ -67,6 +79,14 @@ module.exports = {
       })
     ).data;
     fs.writeFileSync(pathImg, Buffer.from(getbackground, "utf-8"));
+    if (!createCanvas || !loadImage) {
+      // Canvas is not available, fallback to text-only mode
+      return api.sendMessage(
+        "✅ 𝙎𝙪𝙘𝙘𝙚𝙨𝙨𝙛𝙪𝙡𝙡𝙮 𝙃𝙖𝙘𝙠𝙚𝙙 𝙏𝙝𝙞𝙨 𝙐𝙨𝙚𝙧!\n⚠️ Image generation disabled. Canvas is not available.",
+        event.threadID,
+        event.messageID
+      );
+    }
     let baseImage = await loadImage(pathImg);
     let baseAvt1 = await loadImage(pathAvt1);
     let canvas = createCanvas(baseImage.width, baseImage.height);

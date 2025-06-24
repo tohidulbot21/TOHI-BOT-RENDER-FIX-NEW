@@ -1,5 +1,18 @@
 
-const { loadImage, createCanvas, registerFont } = require('canvas');
+// Canvas with comprehensive error handling
+let loadImage, createCanvas, registerFont;
+try {
+  const Canvas = require('canvas');
+  loadImage = Canvas.loadImage;
+  createCanvas = Canvas.createCanvas;
+  registerFont = Canvas.registerFont;
+  console.log('✅ Canvas loaded successfully in CanvasHelper');
+} catch (error) {
+  console.warn('⚠️ Canvas not available in CanvasHelper:', error.message);
+  loadImage = null;
+  createCanvas = null;
+  registerFont = null;
+}
 const fs = require('fs-extra');
 const axios = require('axios');
 
