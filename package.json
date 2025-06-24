@@ -13,8 +13,8 @@
     "render-build-fallback": "npm cache clean --force && rm -rf node_modules package-lock.json && npm install --no-audit --no-fund --prefer-offline --no-optional --legacy-peer-deps --force && mkdir -p modules/commands/cache modules/events/cache includes/database/data attached_assets utils languages"
   },
   "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=8.0.0"
+    "node": ">=21.0.0",
+    "npm": ">=11.0.0"
   },
   "presets": [
     "@babel/preset-env"

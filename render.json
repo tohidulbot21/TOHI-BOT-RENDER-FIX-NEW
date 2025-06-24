@@ -16,7 +16,10 @@
     "SKIP_CANVAS": "true",
     "NPM_CONFIG_ENGINE_STRICT": "false",
     "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD": "true",
-    "CANVAS_PREBUILT": "false"
+    "CANVAS_PREBUILT": "false",
+    "SKIP_NATIVE_MODULES": "true",
+    "npm_config_build_from_source": "true",
+    "PYTHON": "/usr/bin/python3"
   },
   "scaling": {
     "minInstances": 1,

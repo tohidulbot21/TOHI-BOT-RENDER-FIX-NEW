@@ -14,16 +14,36 @@ echo "🧹 Cleaning npm cache and old files..."
 npm cache clean --force 2>/dev/null || true
 rm -rf node_modules package-lock.json 2>/dev/null || true
 
-# Install dependencies with specific flags for Render
-echo "📦 Installing dependencies for Render..."
-npm install --no-audit --no-fund --prefer-offline --no-optional --legacy-peer-deps --force --ignore-engines
+# Skip problematic native dependencies
+echo "🚫 Skipping problematic native dependencies..."
+export SKIP_CANVAS=true
+export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+export SKIP_NATIVE_MODULES=true
+export npm_config_build_from_source=true
 
-# Fallback installation if first attempt fails
-if [ $? -ne 0 ]; then
-    echo "🔄 First installation failed, trying fallback method..."
+# Install essential packages first
+echo "📦 Installing essential packages..."
+npm install express fs-extra axios chalk moment --no-optional --legacy-peer-deps --force --ignore-engines
+
+# Install remaining packages excluding problematic ones
+echo "📦 Installing remaining dependencies..."
+npm install --no-optional --legacy-peer-deps --force --ignore-engines --no-bin-links
+
+# Handle Canvas-related packages separately with fallback
+echo "🎨 Handling Canvas dependencies..."
+npm install canvas discord-image-generation --no-optional --legacy-peer-deps --force --ignore-engines 2>/dev/null || {
+    echo "⚠️ Canvas installation failed, continuing without it..."
+    # Remove canvas from node_modules if partially installed
+    rm -rf node_modules/canvas node_modules/discord-image-generation 2>/dev/null || true
+}
+
+# Fallback installation if needed
+if [ ! -d "node_modules/fs-extra" ]; then
+    echo "🔄 Essential packages missing, trying fallback method..."
     npm cache clean --force
     rm -rf node_modules package-lock.json
-    npm install --legacy-peer-deps --force --ignore-engines --no-optional
+    npm install express fs-extra axios chalk moment --legacy-peer-deps --force --ignore-engines --no-optional
+    npm install --legacy-peer-deps --force --ignore-engines --no-optional --no-bin-links
 fi
 
 # Create necessary directories
