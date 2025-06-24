@@ -2,7 +2,7 @@
     "100092006324917": {
         "userID": "100092006324917",
         "money": 1e+96,
-        "exp": 1546,
+        "exp": 1549,
         "createTime": {
             "timestamp": 1748273172692
         },
@@ -11,7 +11,7 @@
             "busy": false,
             "workTime": 1749800037975
         },
-        "lastUpdate": 1750752704513,
+        "lastUpdate": 1750757976644,
         "name": "MD Tohidul Islam",
         "lastDaily": 1749800679916
     },
@@ -3320,14 +3320,14 @@
     "61577222290831": {
         "userID": "61577222290831",
         "money": 0,
-        "exp": 6,
+        "exp": 7,
         "createTime": {
             "timestamp": 1750694402184
         },
         "data": {
             "timestamp": 1750694402184
         },
-        "lastUpdate": 1750755606435,
+        "lastUpdate": 1750757865209,
         "name": "FB_User_290831"
     },
     "61577648069975": {
