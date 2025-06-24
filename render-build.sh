@@ -16,7 +16,15 @@ rm -rf node_modules package-lock.json 2>/dev/null || true
 
 # Install dependencies with specific flags for Render
 echo "📦 Installing dependencies for Render..."
-npm install --no-audit --no-fund --prefer-offline --no-optional --legacy-peer-deps --force
+npm install --no-audit --no-fund --prefer-offline --no-optional --legacy-peer-deps --force --ignore-engines
+
+# Fallback installation if first attempt fails
+if [ $? -ne 0 ]; then
+    echo "🔄 First installation failed, trying fallback method..."
+    npm cache clean --force
+    rm -rf node_modules package-lock.json
+    npm install --legacy-peer-deps --force --ignore-engines --no-optional
+fi
 
 # Create necessary directories
 echo "📁 Creating necessary directories..."

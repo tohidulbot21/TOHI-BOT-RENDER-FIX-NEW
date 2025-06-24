@@ -3,7 +3,8 @@
   "name": "TOHI-BOT-HUB",
   "type": "web",
   "env": "node",
-  "buildCommand": "npm run render-build || npm run render-build-fallback",
+  "nodeVersion": "18.20.0",
+  "buildCommand": "chmod +x render-build.sh && ./render-build.sh || (chmod +x render-fallback.sh && ./render-fallback.sh)",
   "startCommand": "node main.js",
   "plan": "free",
   "region": "singapore",
@@ -12,7 +13,10 @@
     "PORT": "10000",
     "HOST": "0.0.0.0",
     "NPM_CONFIG_PRODUCTION": "false",
-    "SKIP_CANVAS": "true"
+    "SKIP_CANVAS": "true",
+    "NPM_CONFIG_ENGINE_STRICT": "false",
+    "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD": "true",
+    "CANVAS_PREBUILT": "false"
   },
   "scaling": {
     "minInstances": 1,
